@@ -26,13 +26,16 @@ useEffect(() => {
 },[])
 
 const addUrl = (newUrl) => {
+	console.log(newUrl)
 	fetch('http://localhost:3001/api/v1/urls', {
 		method: 'POST',
-		body: JSON.stringify(newUrl),
-		headers: { 'Content-Type': 'application/json' }
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(newUrl)
 	})
 		.then(response => response.json())
-		.then(response => console.log(response))
+		.then(response => {
+			console.log(response)
+		setUrls(prevUrls => [...prevUrls, response])})
 }
   // componentDidMount() {
   // }

@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 
 export default function UrlForm(props) {
 	const [title, setTitle] = useState('')
-	const [urlToShorten, setUrlToShorten] = useState('')
+	const [long_url, setLong_url] = useState('')
 	// constructor(props) {
   //   super();
   //   this.props = props;
@@ -21,7 +21,7 @@ export default function UrlForm(props) {
 		const newUrl = {
 			id: Date.now,
 			title,
-			urlToShorten,
+			long_url,
 		}
     clearInputs();
 		props.addUrl(newUrl)
@@ -29,7 +29,7 @@ export default function UrlForm(props) {
 
   const clearInputs = () => {
 		setTitle('')
-		setUrlToShorten('')
+		setLong_url('')
     // this.setState({title: '', urlToShorten: ''});
   }
 
@@ -37,19 +37,19 @@ export default function UrlForm(props) {
     return (
       <form>
         <input
-          type='text'
+          type=''
           placeholder='Title...'
           name='title'
           value={title}
-          onChange={e => setTitle(e)}
+          onChange={e => setTitle(e.target.value)}
         />
 
         <input
-          type='text'
+          type=''
           placeholder='URL to Shorten...'
-          name='title'
-          value={title}
-          onChange={e => setUrlToShorten(e)}
+          name='urlToShorten'
+          value={long_url}
+          onChange={e => setLong_url(e.target.value)}
         />
 
         <button onClick={e => handleSubmit(e)}>
