@@ -19,6 +19,7 @@ export default function UrlForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
 		const newUrl = {
+			id: Date.now,
 			title,
 			long_url,
 		}
