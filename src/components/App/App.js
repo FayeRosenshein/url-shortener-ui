@@ -1,21 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import './App.css';
 import { getUrls } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
-export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      urls: []
-    }
-  }
+export function App() {
+	const [urls, setUrls] = useState([])
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     urls: []
+  //   }
+  // }
+useEffect(() => {
+	fetch('http://localhost:3001/api/v1/urls')
+	.then(response => {
+		if (response.ok) {
+			return response.json()
+		}})
+	.then(response => {
+		console.log(response.urls)
+		setUrls(response.urls)
+	
+	})
+},[])
+  // componentDidMount() {
+  // }
 
-  componentDidMount() {
-  }
-
-  render() {
+  // render() {
     return (
       <main className="App">
         <header>
@@ -23,10 +35,10 @@ export class App extends Component {
           <UrlForm />
         </header>
 
-        <UrlContainer urls={this.state.urls}/>
+        <UrlContainer urls={urls}/>
       </main>
     );
   }
-}
+// }
 
 export default App;
