@@ -6,7 +6,7 @@ describe('url spec', () => {
 	it('should view the page title and the existing shortened URLs', () => {
 		cy.get('h1').contains('URL Shortener')
 		cy.get('main').should('be.visible')
-		cy.get('main').find('section').should('have.length', 1)
+		cy.get('main').find('section').should('have.length', 1).contains('Awesome photo')
 	})
 	it('should view the Form with the proper inputs', () => {
 		cy.get("#root > main > Header").find('form').should('be.visible')
@@ -18,6 +18,12 @@ describe('url spec', () => {
 		cy.get('.long-url').type('long url').should('have.value','long url')
 	})
 	it('When a user fills out and submits the form, the new shortened URL should rendered', () => {
+		cy.intercept("POST", "http://localhost:3001/api/v1/urls", {
+      id: 2,
+      long_url: "long url",
+      short_url: "http://localhost:3001/useshorturl/2",
+      title: "title",
+    })
 		cy.get('.title').type('title').should('have.value','title')
 		cy.get('.long-url').type('long url').should('have.value','long url')
 		cy.get('button').click()
