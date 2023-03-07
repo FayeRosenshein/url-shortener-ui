@@ -19,7 +19,7 @@ useEffect(() => {
 			return response.json()
 		}})
 	.then(response => {
-		console.log(response.urls)
+		// console.log(response.urls)
 		setUrls(response.urls)
 	
 	})
@@ -48,7 +48,7 @@ const addUrl = (newUrl) => {
           <UrlForm addUrl={addUrl}/>
         </header>
 
-        <UrlContainer urls={urls}/>
+        <UrlContainer className='url-container' urls={urls}/>
       </main>
     );
   }
