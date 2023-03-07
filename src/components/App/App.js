@@ -24,6 +24,16 @@ useEffect(() => {
 	
 	})
 },[])
+
+const addUrl = (newUrl) => {
+	fetch('http://localhost:3001/api/v1/urls', {
+		method: 'POST',
+		body: JSON.stringify(newUrl),
+		headers: { 'Content-Type': 'application/json' }
+	})
+		.then(response => response.json())
+		.then(response => console.log(response))
+}
   // componentDidMount() {
   // }
 
@@ -32,7 +42,7 @@ useEffect(() => {
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm />
+          <UrlForm addUrl={addUrl}/>
         </header>
 
         <UrlContainer urls={urls}/>
