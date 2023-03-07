@@ -45,7 +45,7 @@ const addUrl = (newUrl) => {
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm addUrl={addUrl}/>
+          <UrlForm className='form' addUrl={addUrl}/>
         </header>
 
         <UrlContainer className='url-container' urls={urls}/>

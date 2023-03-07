@@ -36,7 +36,7 @@ export default function UrlForm(props) {
   // render() {
     return (
       <form>
-        <input
+        <input className='title'
           type=''
           placeholder='Title...'
           name='title'
@@ -44,7 +44,7 @@ export default function UrlForm(props) {
           onChange={e => setTitle(e.target.value)}
         />
 
-        <input
+        <input className='long-url'
           type=''
           placeholder='URL to Shorten...'
           name='urlToShorten'
